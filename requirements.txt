@@ -1,0 +1,6 @@
+mujoco>=3.0
+numpy
+scipy
+cvxpy>=1.4
+clarabel
+matplotlib
