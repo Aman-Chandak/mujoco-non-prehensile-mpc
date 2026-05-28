@@ -4,9 +4,6 @@ A MuJoCo simulation of a non-prehensile manipulation task: a kinematic spherical
 
 Course project for **EEE 587 – Optimal Control of Dynamic Systems**, Arizona State University, Spring 2025.
 
-![Setup](docs/setup.png)
-*(Placeholder — drop a screenshot of the MuJoCo viewer here and update the path. See [Adding a screenshot](#adding-a-screenshot) below.)*
-
 ## What this does
 
 - Tracks an L-shaped reference (forward 0.2 m → 90° turn → 0.2 m) with a free-floating cube on a friction plane.
@@ -82,14 +79,6 @@ A MuJoCo viewer window opens and the cube is pushed along the L-path. After the 
 - The dynamics are **kinematic-linearized**, not the full Newton–Euler rigid-body dynamics. The `FN_VX_GAIN`, `FT_VTH_GAIN`, etc. are hand-tuned gains relating contact force commands to body velocities, calibrated against MuJoCo's response. The computed limit-surface matrix is reported but not directly used inside the MPC; the QP runs on the kinematic model.
 - The pusher is a `mocap` body — it is positioned kinematically rather than being a torque-controlled robot arm. The MPC's force output is converted into a velocity command, with the contact-normal direction biased by `F_n`.
 - Contact-site selection is a heuristic (segment + orientation-error threshold). Replacing it with a hybrid/MIQP formulation that picks the site inside the optimizer was left as future work — discussed in the report.
-
-## Adding a screenshot
-
-Open a sim run, take a snapshot of the MuJoCo viewer, save it as `docs/setup.png`, then update the image path at the top of this README. A short GIF (~3–5 s) is even better — encode with:
-
-```bash
-ffmpeg -i recording.mp4 -vf "fps=10,scale=480:-2:flags=lanczos" docs/demo.gif
-```
 
 ## Author
 
